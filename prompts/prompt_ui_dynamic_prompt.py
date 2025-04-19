@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 import streamlit as st
 
 load_dotenv()
-model = ChatGoogleGenerativeAI(model='gemini-2.5-flash-preview-04-17')
 
 st.header("Ai tutor")
 
@@ -26,10 +25,21 @@ if topic_input and subject_input:
         "depth_input": depth_input
     })
 
+model_choice = st.selectbox(
+    "Choose Model for answer",
+    ["Gemini 2.5 Flash", "Gemini 2.5 Pro"]
+)
+
+
 
 if st.button("summarize"):
     placeholder = st.empty()
     full_response = ""
+
+    if model_choice == "Gemini 2.5 Pro":
+        model = ChatGoogleGenerativeAI(model="gemini-2.5-pro-exp-03-25")
+    else:
+        model = ChatGoogleGenerativeAI(model="gemini-2.5-flash-preview-04-17")
 
     for chunk in model.stream(prompt):
         full_response += chunk.content
