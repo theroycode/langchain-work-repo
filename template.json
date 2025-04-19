@@ -1,16 +1,16 @@
 {
     "name": null,
     "input_variables": [
-        "length_input",
-        "paper_input",
-        "style_input"
+        "depth_input",
+        "subject_input",
+        "topic_input"
     ],
     "optional_variables": [],
     "output_parser": null,
     "partial_variables": {},
     "metadata": null,
     "tags": null,
-    "template": "\nPlease summarize the research paper titled \"{paper_input}\" with the following specifications:\nExplanation Style: {style_input}  \nExplanation Length: {length_input}  \n1. Mathematical Details:  \n   - Include relevant mathematical equations if present in the paper.  \n   - Explain the mathematical concepts using simple, intuitive code snippets where applicable.  \n2. Analogies:  \n   - Use relatable analogies to simplify complex ideas.  \nIf certain information is not available in the paper, respond with: \"Insufficient information available\" instead of guessing.  \nEnsure the summary is clear, accurate, and aligned with the provided style and length.\n",
+    "template": "\nYou're an expert AI educator assisting a BTech student in understanding a topic from their academic curriculum.\n\nTopic: **{topic_input}**  \nSubject Context: **{subject_input}**  \nExplanation Depth: **{depth_input}**  (One of: Quick Insight, Focused Clarity, Deep Dive)\n\nProvide an explanation tailored to a BTech-level student with the following guidelines:\n\n1. **Clarity & Structure**  \n   - Use clean structure with headings or bullet points if needed.  \n   - Avoid vague statements. Be precise and grounded in real concepts.\n\n2. **Mathematical & Technical Detail (for Deep Dive only)**  \n   - Include equations, diagrams (describe them), or simple code snippets if applicable.  \n   - Break down complex equations or logic step-by-step.\n\n3. **Analogies & Intuition**  \n   - Whenever possible, use relatable analogies from everyday life, tech, or pop culture to aid understanding.\n\n4. **Tone & Style**  \n   - Friendly, informative, and engaging \u2014 like a brilliant TA helping their junior.  \n   - Avoid sounding like a textbook; instead, aim for mastery-level clarity.\n\nIf there is insufficient academic content available on this topic, return:\n**\"Insufficient information available for a meaningful explanation.\"**\n\nDo not include anything outside the explanation. Start directly with the summary.\n    ",
     "template_format": "f-string",
     "validate_template": true,
     "_type": "prompt"

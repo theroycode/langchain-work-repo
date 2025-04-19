@@ -6,21 +6,26 @@ import streamlit as st
 load_dotenv()
 model = ChatGoogleGenerativeAI(model='gemini-2.5-flash-preview-04-17')
 
-st.header("Research tool")
+st.header("Ai tutor")
 
-paper_input = st.selectbox( "Select Research Paper Name", ["Attention Is All You Need", "BERT: Pre-training of Deep Bidirectional Transformers", "GPT-3: Language Models are Few-Shot Learners", "Diffusion Models Beat GANs on Image Synthesis"] )
+topic_input = st.text_input("Enter the topic you want a summary for (e.g., 'Convolution', 'Optical Fiber', etc.)")
 
-style_input = st.selectbox( "Select Explanation Style", ["Beginner-Friendly", "Technical", "Code-Oriented", "Mathematical"] ) 
+subject_input = st.text_input("Enter the subject this topic belongs to (e.g., 'Digital Signal Processing', 'Optical Communication')")
 
-length_input = st.selectbox( "Select Explanation Length", ["Short (1-2 paragraphs)", "Medium (3-5 paragraphs)", "Long (detailed explanation)"] )
+depth_input = st.selectbox(
+    "Select Explanation Depth",
+    ["Quick Insight", "Focused Clarity", "Deep Dive"]
+)
 
-template = load_prompt('template.json')
+template = load_prompt("template.json")
 
-prompt = template.invoke({
-    "length_input":length_input,
-    "paper_input":paper_input,
-    "style_input":style_input
-})
+if topic_input and subject_input:
+    prompt = template.invoke({
+        "topic_input": topic_input,
+        "subject_input": subject_input,
+        "depth_input": depth_input
+    })
+
 
 if st.button("summarize"):
     placeholder = st.empty()
