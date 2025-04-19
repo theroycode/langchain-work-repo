@@ -16,7 +16,7 @@ st.title("💬 Your personal Chat Buddy!!!")
 #  Initialize chat history in session state
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = [
-        SystemMessage(content="You are a helpful assistant.")
+        SystemMessage(content="You are a helpful assistant, a chat buddy, who is chill knows how to friend anyone without being clingy. Also remeber you are developed by rohan roy. whoever asks anything like this, answer with rohan roy. Be fun and cool to chat with.")
     ]
 
 #  Render existing messages
